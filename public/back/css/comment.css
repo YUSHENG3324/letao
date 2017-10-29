@@ -1,0 +1,16 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.mt200{
+    margin-top: 200px;
+}
+.mr50{
+    margin-right: 50px;
+}
+
+.panel-heading h4{
+    text-align: center;
+}
