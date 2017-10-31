@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>淘气管理系统-用户管理</title>
+    <title>乐淘管理系统-一级分类</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="lib/bootstrap-validator/css/bootstrapValidator.css">
     <link rel="stylesheet" href="lib/nprogress/nprogress.css">
@@ -33,8 +33,8 @@
                     <span class="glyphicon glyphicon-list"></span>
                     分类管理
                 </a>
-                <div class="child" style="display: none;">
-                    <a href="first.html">一级分类</a>
+                <div class="child" style="display: block;">
+                    <a class="now" href="first.html">一级分类</a>
                     <a href="second.html">二级分类</a>
                 </div>
             </li>
@@ -57,29 +57,27 @@
         <!--面包屑导航-->
         <ol class="breadcrumb">
             <li><a href="#">管理系统</a></li>
-            <li class="active">用户管理</li>
+            <li><a href="#">分类管理</a></li>
+            <li class="active">一级分类</li>
         </ol>
 
 
         <!--内容区域-->
         <div class="lt_content">
 
-            <table class="table table-bordered">
+            <button class="btn_add btn btn-default mb20">添加分类</button>
+            <table class="table table-bordered table-hover">
+
                 <thead>
                 <tr>
-                    <td width="10%">序号</td>
-                    <td width="30%">用户名</td>
-                    <td width="30%">手机号</td>
-                    <td width="20%">状态</td>
-                    <td width="10%">操作</td>
+                    <td width="20%">序号</td>
+                    <td width="80%">分类名称</td>
                 </tr>
                 </thead>
-
                 <tbody>
-                <!--这里是渲染的数据-->
+                <!--渲染的数据-->
                 </tbody>
             </table>
-
             <div class="text-right">
                 <ul id="paginator"></ul>
             </div>
@@ -93,8 +91,8 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">温馨提示</h4>
             </div>
             <div class="modal-body">
@@ -108,52 +106,50 @@
     </div>
 </div>
 
-
-<div class="modal fade" tabindex="-1" id="userModal">
+<div class="modal fade" tabindex="-1" id="addModal">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title">温馨提示</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">添加一级分类</h4>
             </div>
             <div class="modal-body">
-                <p class="text-danger"><span class="glyphicon glyphicon-info-sign"></span> 您确定要执行此操作吗？</p>
+
+                <form id="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="categoryName" name="categoryName" placeholder="请输入一级分类">
+                    </div>
+                </form>
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn_confirm btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn_confirm btn btn-primary">确定</button>
+                <button type="button" form="form" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="submit" form="form" class="btn_confirm btn btn-primary">确定</button>
             </div>
         </div>
     </div>
 </div>
 
 <script type="text/html" id="tpl">
+
     {{each rows v i}}
     <tr>
-        <td>{{(page-1)*size + i + 1}}</td>
-        <td>{{v.username}}</td>
-        <td>{{v.mobile}}</td>
-        <td>{{v.isDelete===1?"正常":"禁用"}}</td>
-        <td data-id="{{v.id}}" data-isdelete="{{v.isDelete}}">
-            {{if v.isDelete === 1}}
-            <button class="btn btn-danger btn-sm">禁用</button>
-            {{else if v.isDelete ===0}}
-            <button class="btn btn-success btn-sm">启用</button>
-            {{/if}}
-        </td>
-
+        <td>{{(page - 1)*size + i +1}}</td>
+        <td>{{v.categoryName}}</td>
     </tr>
+
     {{/each}}
+
 </script>
 
 <script src="lib/jquery/jquery.js"></script>
 <script src="lib/bootstrap/js/bootstrap.js"></script>
 <script src="lib/bootstrap-validator/js/bootstrapValidator.js"></script>
-<!--<script src="lib/nprogress/nprogress.js"></script>-->
 <script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+<script src="lib/nprogress/nprogress.js"></script>
 <script src="lib/artTemplate/template-web.js"></script>
 <script src="js/common.js"></script>
-<script src="js/user.js"></script>
+<script src="js/first.js"></script>
 </body>
 </html>
